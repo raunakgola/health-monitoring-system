@@ -28,8 +28,8 @@ Ensure you have Python 3.7+ installed. Install the required Python packages usin
 pip install -r requirements.txt
 
 3. Download the Datasets:
-[Place the datasets for physical and mental health assessment in the /data directory.](https://www.kaggle.com/datasets/abhayayare/health-metrics-dataset)
-[Place the datasets for physical and mental health assessment in the /data directory.](https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset)
+[Medical health dataset](https://www.kaggle.com/datasets/abhayayare/health-metrics-dataset)
+[Mental health dataset](https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset)
 
 4. Train the Models:
 Train the machine learning models by running the Jupyter files.
