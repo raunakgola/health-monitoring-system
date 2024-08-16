@@ -23,11 +23,11 @@ To set up and run the project locally, follow these steps:
 git clone https://github.com/yourusername/health-monitoring-system.git
 cd health-monitoring-system
 
-3. Install Dependencies:
+2. Install Dependencies:
 Ensure you have Python 3.7+ installed. Install the required Python packages using pip:
 pip install -r requirements.txt
 
-Download the Datasets:
+3. Download the Datasets:
 [Place the datasets for physical and mental health assessment in the /data directory.](https://www.kaggle.com/datasets/abhayayare/health-metrics-dataset)
 [Place the datasets for physical and mental health assessment in the /data directory.](https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset)
 
