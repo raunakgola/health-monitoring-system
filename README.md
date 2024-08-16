@@ -11,17 +11,15 @@ User-Friendly Interface: Easy-to-navigate UI that allows users to input data, re
 The project is organized into the following key components:
 
 /data: Contains the datasets used for training and testing the machine learning models.
-/models: Includes the scripts for training the machine learning models and the saved model files.
-/ui: Contains the code for the user interface, including frontend and backend components.
-/deployment: Scripts and configurations for deploying the system on a cloud platform.
-/docs: Documentation related to the project, including the project report, user manual, and technical specifications.
-Installation
+/Jupyter files: Includes the scripts for training the machine learning models and the saved model files.
+/models: Having ht pickled models files
+/ui: Contains the code for the user interface, including frontend only.
+/docs: Documentation related to the project, including the requirement file.
+
+## Installation
 To set up and run the project locally, follow these steps:
 
-Clone the Repository:
-
-bash
-Copy code
+1. *Clone the Repository:
 git clone https://github.com/yourusername/health-monitoring-system.git
 cd health-monitoring-system
 Install Dependencies:
