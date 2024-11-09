@@ -30,19 +30,15 @@ Usage
 1.  Clone the repository.
 2.  Install dependencies by running:
 
-    bash
+    ```
+    pip install -r Requirements.txt
+    ```
 
-    Copy code
+4.  Run the application with:
 
-    `pip install -r Requirements.txt`
-
-3.  Run the application with:
-
-    bash
-
-    Copy code
-
-    `streamlit run App.py`
+    ```
+    streamlit run App.py
+    ```
 
 ### Using the Application
 
@@ -65,11 +61,10 @@ Requirements
 
 The required packages for this project are listed in `Requirements.txt`. You can install them with:
 
-bash
 
-Copy code
-
-`pip install -r Requirements.txt`
+```
+pip install -r Requirements.txt
+```
 
 Key packages include:
 
@@ -82,7 +77,10 @@ Key packages include:
 Screenshots
 -----------
 
-Add screenshots of the application here to provide a visual overview.
+![image](https://github.com/user-attachments/assets/c3d19660-cf8f-464e-8d8b-626e043a2bd1)
+![image](https://github.com/user-attachments/assets/b800c3e5-df6c-4375-9cf1-04b9b5ae5076)
+
+
 
 License
 -------
