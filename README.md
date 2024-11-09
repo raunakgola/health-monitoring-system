@@ -77,7 +77,7 @@ Key packages include:
 Screenshots
 -----------
 
-![image](https://github.com/user-attachments/assets/c3d19660-cf8f-464e-8d8b-626e043a2bd1)
+!["interface of app"](https://github.com/user-attachments/assets/c3d19660-cf8f-464e-8d8b-626e043a2bd1){width=300px height=200px}
 ![image](https://github.com/user-attachments/assets/b800c3e5-df6c-4375-9cf1-04b9b5ae5076)
 
 
