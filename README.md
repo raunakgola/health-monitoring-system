@@ -1,59 +1,90 @@
-# Health Monitoring System: Physical and Mental Health Assessment
-## Overview
-This project is a comprehensive health monitoring system that utilizes advanced machine learning models to assess both physical and mental health. The system allows users to input health-related data. The system is designed with a user-friendly interface and is accessible from any device with an internet connection.
+Health Diagnosis Web App 🩺
+===========================
 
-## Features
-Dual Health Assessment: The system evaluates both physical and mental health metrics, offering a holistic view of the user’s overall health.
-Machine Learning Models: Multiple models, including Support Vector Machine (SVM), Decision Tree, Logistic Regression, K-Nearest Neighbors (KNN), Naive Bayes, and Random Forest, are used to ensure high accuracy in predictions.
-User-Friendly Interface: Easy-to-navigate UI that allows users to input data, receive results, and access actionable insights.
+Overview
+--------
 
-## Project Structure
-The project is organized into the following key components:
+This is a web application built with Streamlit that provides users with a simple and interactive way to check their health status. The app offers two main functionalities:
 
-/data: Contains the datasets used for training and testing the machine learning models.
-/Jupyter files: Includes the scripts for training the machine learning models and the saved model files.
-/models: Having ht pickled models files
-/ui: Contains the code for the user interface, including frontend only.
-/docs: Documentation related to the project, including the requirement file.
+1.  **Medical Health Diagnosis** 🫀
+2.  **Mental Health Diagnosis** 🧠
 
-## Installation
-To set up and run the project locally, follow these steps:
+Users can input their health parameters and receive a diagnosis on their health status with recommendations.
 
-1. Clone the Repository:
-git clone https://github.com/yourusername/health-monitoring-system.git
-cd health-monitoring-system
+File Structure
+--------------
 
-2. Install Dependencies:
-Ensure you have Python 3.7+ installed. Install the required Python packages using pip:
-pip install -r requirements.txt
+-   **App.py**: The main application file containing the Streamlit interface.
+-   **Images/**: Folder containing images used in the application interface.
+-   **Models/**: Folder containing trained machine learning models for predictions.
+-   **Medical Health.ipynb**: Jupyter notebook for medical health model training and analysis.
+-   **Mental Health.ipynb**: Jupyter notebook for mental health model training and analysis.
+-   **README.md**: Documentation file providing an overview of the project.
+-   **Requirements.txt**: List of required Python packages for the project.
 
-3. Download the Datasets:
-[Medical health dataset](https://www.kaggle.com/datasets/abhayayare/health-metrics-dataset)
-[Mental health dataset](https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset)
+Usage
+-----
 
-4. Train the Models:
-Train the machine learning models by running the Jupyter files.
+### Running the Application
 
-5. Run the UI:
-Launch the user interface by running the following command "streamlit run App.py"
+1.  Clone the repository.
+2.  Install dependencies by running:
 
-## Usage
-Once the system is running, users can:
+    bash
 
-* Input Data: Enter health-related information through the user interface.
-* Receive Assessment: The system will analyze the data and provide real-time feedback on physical and mental health.
+    Copy code
 
-## Models Used
-Decision Tree: Provides a visual representation of decisions and their possible consequences and this model used for the mental health classification.
-Logistic Regression: this model is particularly for mental health assessment.
+    `pip install -r Requirements.txt`
 
-## Contributing
-Contributions to this project are welcome. If you would like to contribute, please follow these steps:
+3.  Run the application with:
 
-* Fork the repository.
-* Create a new branch for your feature or bugfix.
-* Submit a pull request with a description of your changes.
+    bash
 
+    Copy code
 
-Acknowledgments
-We would like to thank the contributors and the open-source community for their support and the resources provided for this project.
+    `streamlit run App.py`
+
+### Using the Application
+
+1.  Choose either **Medical Health** or **Mental Health** diagnosis from the sidebar.
+2.  Fill in the required details based on your selected diagnosis option.
+3.  Click the **Predict** button to get the diagnosis and recommendations.
+
+Model Details
+-------------
+
+-   **Medical Health Prediction**:
+    -   Model: Logistic Regression (loaded as `LR_model.pkl`)
+    -   Inputs include gender, age, blood pressure, cholesterol level, BMI, smoking, and diabetes status.
+-   **Mental Health Prediction**:
+    -   Model: Decision Tree (loaded as `DT_model.pkl`)
+    -   Inputs include gender, country, occupation, stress levels, coping habits, and self-care history.
+
+Requirements
+------------
+
+The required packages for this project are listed in `Requirements.txt`. You can install them with:
+
+bash
+
+Copy code
+
+`pip install -r Requirements.txt`
+
+Key packages include:
+
+-   `streamlit`
+-   `pickle`
+-   `pandas`
+-   `sklearn`
+-   `numpy`
+
+Screenshots
+-----------
+
+Add screenshots of the application here to provide a visual overview.
+
+License
+-------
+
+Specify the license for your project here.
