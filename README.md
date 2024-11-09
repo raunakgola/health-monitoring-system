@@ -77,12 +77,12 @@ Key packages include:
 Screenshots
 -----------
 
-<img src="https://github.com/user-attachments/assets/b800c3e5-df6c-4375-9cf1-04b9b5ae5076" alt="Description" width="300" height="200">
-![image](https://github.com/user-attachments/assets/b800c3e5-df6c-4375-9cf1-04b9b5ae5076)
+<img src="https://github.com/user-attachments/assets/c95d5f6b-f0b3-4640-bbaa-1458ac433631" alt="just opening the app">
+<p align="center">
+  Figure 1. This is the UI while open the webapp.
+</p>
+<img src="https://github.com/user-attachments/assets/b800c3e5-df6c-4375-9cf1-04b9b5ae5076" alt="after prediction">
+<p align="center">
+  Figure 2. After prediction.
+</p>
 
-
-
-License
--------
-
-Specify the license for your project here.
