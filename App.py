@@ -101,7 +101,7 @@ with st.sidebar:
             values2 = np.array([gender1, country, occupation, self_emp, treat, Indoor, grow_stress, habit, mental_his, struggle,interest, weak, interview, care]).reshape(1, -1)
 
             # Load the pre-trained mental health model
-            model2 = pickle.load(open(".\Models\DT_model.pkl", "rb"))
+            model2 = pickle.load(open("Models/DT_model.pkl", "rb"))
 
             # Get the prediction result
             pred = model2.predict(values2)[0]
