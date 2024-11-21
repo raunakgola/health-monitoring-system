@@ -49,7 +49,7 @@ with st.sidebar:
             values1 = np.array([gender, age, sys_bp, dia_bp, cholesterol, BMI, smoke, diabetes]).reshape(1, -1)
 
             # Load the pre-trained medical health model
-            model1 = pickle.load(open(".\Models\LR_model.pkl", "rb"))
+            model1 = pickle.load(open("Models/LR_model.pkl", "rb"))
 
             # Get the prediction result
             pred = model1.predict(values1)[0]
@@ -61,21 +61,21 @@ with st.sidebar:
                     st.write("You're in great shape! Keep up the good work by eating healthy, exercising regularly, and getting enough sleep.")
                     st.write("Your overall health is excellent. Consider scheduling a routine check-up to maintain your well-being.")
                 with col2:
-                    st.image(".\Images\good.png")
+                    st.image("Images/good.png")
             elif pred == 2:
                 with col1:
                     st.header("Fair")
                     st.write("Your health is fair. It's important to focus on improving your diet and increasing physical activity.")
                     st.write("You might be experiencing some minor health issues. Consult a doctor to get a proper diagnosis and treatment.")
                 with col2:
-                    st.image(".\Images\fair.png")
+                    st.image("Images/fair.png")
             else:
                 with col1:
                     st.header("Bad")
                     st.write("Your health is currently at risk. Seek immediate medical attention and follow the doctor's advice.")
                     st.write("You need to prioritize your health. Make lifestyle changes and follow a treatment plan as recommended.")
                 with col2:
-                    st.image(".\Images\bad.png")
+                    st.image("Images/bad.png")
 
     # If Mental Health is selected
     if heatlth_category == 0:
@@ -113,20 +113,20 @@ with st.sidebar:
                     st.write("You're doing great! Keep practicing self-care, and explore new ways to nurture your well-being.")
                     st.write("Your mental health is strong. Consider engaging in activities that bring you joy and fulfillment.")
                 with col2:
-                    st.image(".\Images\good1.png")
+                    st.image("Images/good1.png")
             elif pred == 1:
                 with col1:
                     st.header("Fair")
                     st.write("You might be experiencing some challenges. Try incorporating relaxation techniques like meditation or yoga.")
                     st.write("It's okay to not be okay. Reach out to friends, family, or a mental health professional for support.")
                 with col2:
-                    st.image(".\Images\fair1.png")
+                    st.image("Images/fair1.png")
             else:
                 with col1:
                     st.header("Bad")
                     st.write("Your mental health is a priority. Please reach out to a crisis hotline or mental health professional immediately.")
                     st.write("You're not alone. There are resources available to help you cope. Seek support and don't hesitate to ask for help.")
                 with col2:
-                    st.image(".\Images\bad1.png")
+                    st.image("Images/bad1.png")
 
 
