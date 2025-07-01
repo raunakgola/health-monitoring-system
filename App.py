@@ -1,20 +1,8 @@
 import streamlit as st  # Import Streamlit library for creating the web app
 import pickle  # Import pickle for loading saved models
-import pandas  # Import pandas for data handling (though unused here)
+import pandas as pd  # Import pandas for data handling (though unused here)
 import sklearn  # Import sklearn (used indirectly through saved models)
-import numpy as np  # Import numpy for numerical operations
 
-# Define lambdas for mapping integer values to string representations
-fn = lambda x: \
-{0: 'Australia', 1: 'Belgium', 2: 'Bosnia and Herzegovina', 3: 'Brazil', 4: 'Canada', 5: 'Colombia', 6: 'Costa Rica',
- 7: 'Croatia', 8: 'Czech Republic', 9: 'Denmark', 10: 'Finland', 11: 'France', 12: 'Georgia', 13: 'Germany',
- 14: 'Greece', 15: 'India', 16: 'Ireland', 17: 'Israel', 18: 'Italy', 19: 'Mexico', 20: 'Moldova', 21: 'Netherlands',
- 22: 'New Zealand', 23: 'Nigeria', 24: 'Philippines', 25: 'Poland', 26: 'Portugal', 27: 'Russia', 28: 'Singapore',
- 29: 'South Africa', 30: 'Sweden', 31: 'Switzerland', 32: 'Thailand', 33: 'United Kingdom', 34: 'United States'}[x]
-fn1 = lambda x1: {0: 'Business', 1: 'Corporate', 2: 'Housewife', 3: 'Others', 4: 'Student'}[x1]
-fn2 = lambda x2: {0: '1-14 days', 1: '15-30 days', 2: '31-60 days', 3: 'Go out Every day', 4: 'More than 2 months'}[x2]
-fn3 = lambda x3: {0: 'Maybe', 1: 'No', 2: 'Yes'}[x3]
-fn4 = lambda x4: {0: 'No', 1: 'Not sure', 2: 'Yes'}[x4]
 
 # Set up the Streamlit page configuration
 st.set_page_config("Diagnosis", layout='wide')
@@ -34,25 +22,34 @@ with st.sidebar:
     # If Medical Health is selected
     if heatlth_category == 1:
         # Get user inputs for medical health parameters
-        gender = st.selectbox("Select your Gender", [0, 1], format_func=lambda x: 'Male' if x == 1 else 'Female')
+        gender = st.selectbox("Select your Gender",('Male', 'Female'))
         age = st.number_input("Enter your age ", min_value=18, max_value=80)
         sys_bp = st.number_input("Enter systolic BP ", min_value=105, max_value=150)
         dia_bp = st.number_input("Enter diastolic BP ", max_value=95, min_value=65)
         cholesterol = st.number_input("Enter your Cholesterol", max_value=240, min_value=140)
         BMI = st.number_input("Enter your BMI in Kg/m²", max_value=40, min_value=25)
-        smoke = st.selectbox("Do you smoke?", [0, 1], format_func=lambda x: 'YES' if x == 1 else 'NO')
-        diabetes = st.selectbox("Do you have diabetes?", [0, 1], format_func=lambda x: 'YES' if x == 1 else 'NO')
+        smoke = st.selectbox("Do you smoke?", [True, False], format_func=lambda x: 'YES' if x == 1 else 'NO')
+        diabetes = st.selectbox("Do you have diabetes?", [True, False], format_func=lambda x: 'YES' if x == 1 else 'NO')
 
         # When the Predict button is clicked
         if st.button("Predict"):
             # Prepare the input data for the model
-            values1 = np.array([gender, age, sys_bp, dia_bp, cholesterol, BMI, smoke, diabetes]).reshape(1, -1)
+            df = pd.DataFrame({
+                'Gender': [gender],
+                'Age': [age],
+                'Systolic BP': [sys_bp],
+                'Diastolic BP': [dia_bp],
+                'Cholesterol': [cholesterol],
+                'BMI': [BMI],
+                'Smoker': [smoke],
+                'Diabetes': [diabetes]
+            })
 
             # Load the pre-trained medical health model
-            model1 = pickle.load(open("Models/LR_model.pkl", "rb"))
+            model1 = pickle.load(open("Models/DT_Medical_data.pkl", "rb"))
 
             # Get the prediction result
-            pred = model1.predict(values1)[0]
+            pred = model1.predict(df)[0]
 
             # Display the result based on the prediction
             if pred == 1:
@@ -79,32 +76,54 @@ with st.sidebar:
 
     # If Mental Health is selected
     if heatlth_category == 0:
+
         # Get user inputs for mental health parameters
-        gender1 = st.selectbox("Select your Gender", [0, 1], format_func=lambda x: 'Male' if x == 1 else 'Female')
-        country = st.selectbox("Which country do you belong?", list(range(35)), format_func=fn)
-        occupation = st.selectbox("What's your Occupation?", [0, 1, 2, 3, 4], format_func=fn1)
-        self_emp = st.selectbox("Are you self-employed?", [0, 1], format_func=lambda x: 'YES' if x == 1 else 'NO')
-        treat = st.selectbox("Have you had any treatment before?", [0, 1],format_func=lambda x: 'YES' if x == 1 else 'NO')
-        Indoor = st.selectbox("How much time do you spend indoors?", [0, 1, 2, 3, 4], format_func=fn2)
-        grow_stress = st.selectbox("Does your stress grow?", [0, 1, 2], format_func=fn3)
-        habit = st.selectbox("Have you tried changing your habits?", [0, 1, 2], format_func=fn3)
-        mental_his = st.selectbox("Do you have a history of mental illness?", [0, 1, 2], format_func=fn3)
-        struggle = st.selectbox("Do you struggle to cope?", [0, 1], format_func=lambda x: 'YES' if x == 1 else 'NO')
-        interest = st.selectbox("Do you have work interest?", [0, 1, 2], format_func=fn3)
-        weak = st.selectbox("Do you have social weaknesses?", [0, 1, 2], format_func=fn3)
-        interview = st.selectbox("Have you gone through any mental health interviews?", [0, 1, 2], format_func=fn3)
-        care = st.selectbox("Do you care for your mental health?", [0, 1, 2], format_func=fn4)
+        gender1 = st.selectbox("Select your Gender", ('Female', 'Male'))
+        country = st.selectbox("Which country do you belong?",('United States', 'Poland', 'Australia', 'Canada', 'United Kingdom', 'South Africa', 'Sweden', 
+                                                                'New Zealand', 'Netherlands', 'India', 'Belgium', 'Ireland', 'France', 'Portugal', 'Brazil', 
+                                                                'Costa Rica', 'Russia', 'Germany', 'Switzerland', 'Finland', 'Israel', 'Italy', 'Bosnia and Herzegovina', 
+                                                                'Singapore', 'Nigeria', 'Croatia', 'Thailand', 'Denmark', 'Mexico', 'Greece', 'Moldova', 'Colombia', 'Georgia', 
+                                                                'Czech Republic', 'Philippines'))
+        occupation = st.selectbox("What's your Occupation?", ('Corporate', 'Student', 'Business', 'Housewife', 'Others'))
+        self_emp = st.selectbox("Are you self-employed?", ('No', 'Yes'))
+        familiy_history = st.selectbox("Do you have a family history of mental illness?",('No', 'Yes'))
+        Indoor = st.selectbox("How much time do you spend indoors?",('1-14 days', 'Go out Every day', 'More than 2 months', '15-30 days', '31-60 days'))
+        grow_stress = st.selectbox("Does your stress grow?", ('Yes', 'No', 'Maybe'))
+        habit = st.selectbox("Have you tried changing your habits?", ('No', 'Yes', 'Maybe'))
+        mental_his = st.selectbox("Do you have a history of mental illness?", ('Yes', 'No', 'Maybe'))
+        mood_swings = st.selectbox("How much do you experience mood swings?", ('Medium', 'Low', 'High'))
+        struggle = st.selectbox("Do you struggle to cope?", ('No', 'Yes'))
+        interest = st.selectbox("Do you have work interest?", ('No', 'Maybe', 'Yes'))
+        weak = st.selectbox("Do you have social weaknesses?", ('Yes', 'No', 'Maybe'))
+        interview = st.selectbox("Have you gone through any mental health interviews?", ('No', 'Maybe', 'Yes'))
+        care = st.selectbox("Do you care for your mental health?", ('Not sure', 'No', 'Yes'))
 
         # When the Predict button is clicked
         if st.button("Predict"):
             # Prepare the input data for the model
-            values2 = np.array([gender1, country, occupation, self_emp, treat, Indoor, grow_stress, habit, mental_his, struggle,interest, weak, interview, care]).reshape(1, -1)
+            df1 = pd.DataFrame({
+                'Gender': [gender1],
+                'Country': [country],
+                'Occupation': [occupation],
+                'self_employed': [self_emp],
+                'family_history': [familiy_history],
+                'Days_Indoors': [Indoor],
+                'Growing_Stress': [grow_stress],
+                'Changes_Habits': [habit],
+                'Mental_Health_History': [mental_his],
+                'Mood_Swings': [mood_swings],
+                'Coping_Struggles': [struggle],
+                'Work_Interest': [interest],
+                'Social_Weakness': [weak],
+                'mental_health_interview': [interview],
+                'care_options': [care]
+            })
 
             # Load the pre-trained mental health model
-            model2 = pickle.load(open("Models/DT_model.pkl", "rb"))
+            model2 = pickle.load(open("Models/DT_mental_health.pkl", "rb"))
 
             # Get the prediction result
-            pred = model2.predict(values2)[0]
+            pred = model2.predict(df1)[0]
 
             # Display the result based on the prediction
             if pred == 0:
@@ -128,5 +147,3 @@ with st.sidebar:
                     st.write("You're not alone. There are resources available to help you cope. Seek support and don't hesitate to ask for help.")
                 with col2:
                     st.image("Images/bad1.png")
-
-
